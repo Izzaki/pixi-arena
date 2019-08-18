@@ -1,9 +1,11 @@
 import * as PIXI from 'pixi.js';
 import {Assets} from "../Assets";
 import {CardsDeck} from "../Views/CardsDeck";
-import {DefaultScene} from "./MixedTextScene";
+import {DefaultScene} from "./DefaultScene";
 
 export class CardsScene extends DefaultScene {
+    ł
+
     constructor(app: PIXI.Application, resources: PIXI.LoaderResource) {
         super(app, resources);
 

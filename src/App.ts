@@ -3,9 +3,10 @@ import * as TWEEN from '@tweenjs/tween.js';
 import {Assets} from "./Assets";
 import Stats = require('stats.js');
 import {CardsScene} from "./Scenes/CardsScene";
-import {DefaultScene, MixedTextScene} from "./Scenes/MixedTextScene";
+import {MixedTextScene} from "./Scenes/MixedTextScene";
 import {MainMenuScene} from "./Scenes/MainMenuScene";
 import {AwesomeFireScene} from "./Scenes/AwesomeFireScene";
+import {DefaultScene} from "./Scenes/DefaultScene";
 
 export class App extends PIXI.Application {
 

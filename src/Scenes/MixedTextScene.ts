@@ -1,24 +1,7 @@
 import * as PIXI from 'pixi.js';
 import {MixedText} from "../Views/MixedText";
-import {eventName, shuffle} from "../utils";
-import {Config} from "../Config";
-import {TextButton} from "../Views/TextButton";
-
-export class DefaultScene extends PIXI.Container {
-
-    @eventName
-    static GO_TO_MENU_BUTTON_CLICKED: string;
-
-    constructor(app: PIXI.Application, resources: PIXI.LoaderResource) {
-        super();
-
-        const goToMenuButton = new TextButton('Go to menu', Config.DEFAULT_FONT_STYLE, () => this.emit(DefaultScene.GO_TO_MENU_BUTTON_CLICKED));
-        goToMenuButton.anchor = new PIXI.Point(0.5, 0.5);
-        goToMenuButton.x = app.screen.width / 2;
-        goToMenuButton.y = app.screen.height - 100;
-        this.addChild(goToMenuButton);
-    }
-}
+import {shuffle} from "../utils";
+import {DefaultScene} from "./DefaultScene";
 
 export class MixedTextScene extends DefaultScene {
     constructor(app: PIXI.Application, resources: PIXI.LoaderResource) {
