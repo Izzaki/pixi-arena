@@ -4,7 +4,6 @@ import {CardsDeck} from "../Views/CardsDeck";
 import {DefaultScene} from "./DefaultScene";
 
 export class CardsScene extends DefaultScene {
-    ł
 
     constructor(app: PIXI.Application, resources: PIXI.LoaderResource) {
         super(app, resources);
