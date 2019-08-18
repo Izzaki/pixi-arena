@@ -5,6 +5,7 @@ import Stats = require('stats.js');
 import {CardsScene} from "./Scenes/CardsScene";
 import {DefaultScene, MixedTextScene} from "./Scenes/MixedTextScene";
 import {MainMenuScene} from "./Scenes/MainMenuScene";
+import {AwesomeFireScene} from "./Scenes/AwesomeFireScene";
 
 export class App extends PIXI.Application {
 
@@ -22,12 +23,14 @@ export class App extends PIXI.Application {
             Assets.helmet.url,
             Assets.key.url,
             Assets.skeleton.url,
+            Assets.fire.url,
+            Assets.awesomeFire.url,
         ]).load((loader, resources) => {
             const mainMenuScene = new MainMenuScene(this, resources);
             this._mainMenuScene = mainMenuScene;
             mainMenuScene.on(MainMenuScene.CARDS_BUTTON_CLICKED, () => this._setScene(new CardsScene(this, resources)));
             mainMenuScene.on(MainMenuScene.MIXED_TEXT_BUTTON_CLICKED, () => this._setScene(new MixedTextScene(this, resources)));
-            mainMenuScene.on(MainMenuScene.FIRE_BUTTON_CLICKED, () => this._setScene(new CardsScene(this, resources)));
+            mainMenuScene.on(MainMenuScene.FIRE_BUTTON_CLICKED, () => this._setScene(new AwesomeFireScene(this, resources)));
             this._setScene(mainMenuScene);
         });
     }

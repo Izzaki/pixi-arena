@@ -18,6 +18,16 @@ export class Assets {
         name: 'key',
         url: 'assets/key.png'
     };
+
+    static awesomeFire: IAsset = {
+        name: 'awesome-fire',
+        url: 'assets/awesome-fire.json'
+    };
+
+    static fire: IAsset = {
+        name: 'fire',
+        url: 'assets/fire.png'
+    };
 }
 
 export interface IAsset {
