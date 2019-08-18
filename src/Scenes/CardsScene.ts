@@ -1,10 +1,11 @@
 import * as PIXI from 'pixi.js';
 import {Assets} from "../Assets";
 import {CardsDeck} from "../Views/CardsDeck";
+import {DefaultScene} from "./MixedTextScene";
 
-export class CardsScene extends PIXI.Container {
+export class CardsScene extends DefaultScene {
     constructor(app: PIXI.Application, resources: PIXI.LoaderResource) {
-        super();
+        super(app, resources);
 
         const cardsDeck = new CardsDeck(resources[Assets.card.url].texture, 144, 3);
         const destinationCardsDeck = new CardsDeck(resources[Assets.card.url].texture, 0, 3);

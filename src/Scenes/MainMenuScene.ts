@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import {Config} from "../Config";
 import {eventName} from "../utils";
+import {TextButton} from "../Views/TextButton";
 
 export class MainMenuScene extends PIXI.Container {
 
@@ -18,9 +19,9 @@ export class MainMenuScene extends PIXI.Container {
 
         const centeringPoint = new PIXI.Point(0.5, 0.5);
         const name = new PIXI.Text('Robert Wieclawek', {fontSize: 24, fill: 0xFFFFFF});
-        const cardsButton = new PIXI.Text('Cards', Config.DEFAULT_FONT_STYLE);
-        const mixedTextButton = new PIXI.Text('Mixed Text', Config.DEFAULT_FONT_STYLE);
-        const fireButton = new PIXI.Text('Awesome Fire', Config.DEFAULT_FONT_STYLE);
+        const cardsButton = new TextButton('Cards', Config.DEFAULT_FONT_STYLE, () => this.emit(MainMenuScene.CARDS_BUTTON_CLICKED));
+        const mixedTextButton = new TextButton('Mixed Text', Config.DEFAULT_FONT_STYLE, () => this.emit(MainMenuScene.MIXED_TEXT_BUTTON_CLICKED));
+        const fireButton = new TextButton('Awesome Fire', Config.DEFAULT_FONT_STYLE, () => this.emit(MainMenuScene.FIRE_BUTTON_CLICKED));
 
         name.anchor = centeringPoint;
         cardsButton.anchor = centeringPoint;
@@ -38,22 +39,6 @@ export class MainMenuScene extends PIXI.Container {
 
         fireButton.x = app.screen.width / 2;
         fireButton.y = app.screen.height / 2 + 150;
-
-        cardsButton.interactive = true;
-        mixedTextButton.interactive = true;
-        fireButton.interactive = true;
-
-        cardsButton.on('pointerup', () => {
-            this.emit(MainMenuScene.CARDS_BUTTON_CLICKED);
-        });
-
-        cardsButton.on('pointerup', () => {
-            this.emit(MainMenuScene.MIXED_TEXT_BUTTON_CLICKED);
-        });
-
-        cardsButton.on('pointerup', () => {
-            this.emit(MainMenuScene.FIRE_BUTTON_CLICKED);
-        });
 
         this.addChild(name, cardsButton, mixedTextButton, fireButton);
     }

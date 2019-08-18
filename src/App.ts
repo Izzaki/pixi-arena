@@ -3,10 +3,13 @@ import * as TWEEN from '@tweenjs/tween.js';
 import {Assets} from "./Assets";
 import Stats = require('stats.js');
 import {CardsScene} from "./Scenes/CardsScene";
-import {MixedTextScene} from "./Scenes/MixedTextScene";
+import {DefaultScene, MixedTextScene} from "./Scenes/MixedTextScene";
 import {MainMenuScene} from "./Scenes/MainMenuScene";
 
 export class App extends PIXI.Application {
+
+    private _mainMenuScene: MainMenuScene;
+
     load(): void {
         this._turnOnDebugFps();
         this._loadScenes();
@@ -20,9 +23,8 @@ export class App extends PIXI.Application {
             Assets.key.url,
             Assets.skeleton.url,
         ]).load((loader, resources) => {
-            // const scene = new CardsScene(this, resources);
-            // const scene = new MixedTextScene(this, resources);
             const mainMenuScene = new MainMenuScene(this, resources);
+            this._mainMenuScene = mainMenuScene;
             mainMenuScene.on(MainMenuScene.CARDS_BUTTON_CLICKED, () => this._setScene(new CardsScene(this, resources)));
             mainMenuScene.on(MainMenuScene.MIXED_TEXT_BUTTON_CLICKED, () => this._setScene(new MixedTextScene(this, resources)));
             mainMenuScene.on(MainMenuScene.FIRE_BUTTON_CLICKED, () => this._setScene(new CardsScene(this, resources)));
@@ -33,6 +35,10 @@ export class App extends PIXI.Application {
     private _setScene(scene: PIXI.Container): void {
         this.stage.removeChildren();
         this.stage.addChild(scene);
+
+        scene.once(DefaultScene.GO_TO_MENU_BUTTON_CLICKED, () => {
+            this._setScene(this._mainMenuScene);
+        });
     }
 
     private _turnOnDebugFps(): void {
