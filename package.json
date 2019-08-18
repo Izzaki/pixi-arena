@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/stats": "^0.16.30",
     "@types/tween.js": "^17.2.0",
+    "firebase": "^6.4.0",
     "typescript": "^3.5.3",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6",
