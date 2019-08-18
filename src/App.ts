@@ -1,29 +1,47 @@
 import * as PIXI from 'pixi.js';
 import * as TWEEN from '@tweenjs/tween.js';
 import {Assets} from "./Assets";
-import {CardsDeck} from "./CardsDeck";
 import Stats = require('stats.js');
+import {CardsScene} from "./Scenes/CardsScene";
+import {MixedTextScene} from "./Scenes/MixedTextScene";
+import {MainMenuScene} from "./Scenes/MainMenuScene";
 
 export class App extends PIXI.Application {
     load(): void {
-        const stats = new Stats();
-        stats.showPanel( 0 );
-        document.body.appendChild( stats.dom );
+        this._turnOnDebugFps();
+        this._loadScenes();
+    }
 
+    private _loadScenes() {
         this.ticker.add(() => TWEEN.update());
-        this.ticker.add(() => stats.update());
-        this.loader.add(Assets.card.name, Assets.card.url).load((loader, resources) => {
-
-            const cardsDeck = new CardsDeck(resources.card.texture, 144, 3);
-            const destinationCardsDeck = new CardsDeck(resources.card.texture, 0, 3);
-            cardsDeck.x = 150;
-            cardsDeck.y = 450;
-            destinationCardsDeck.x = 350;
-            destinationCardsDeck.y = 100;
-            this.stage.addChild(cardsDeck);
-            this.stage.addChild(destinationCardsDeck);
-
-            cardsDeck.transferTo(destinationCardsDeck);
+        this.loader.add([
+            Assets.card.url,
+            Assets.helmet.url,
+            Assets.key.url,
+            Assets.skeleton.url,
+        ]).load((loader, resources) => {
+            // const scene = new CardsScene(this, resources);
+            // const scene = new MixedTextScene(this, resources);
+            const mainMenuScene = new MainMenuScene(this, resources);
+            mainMenuScene.on(MainMenuScene.CARDS_BUTTON_CLICKED, () => this._setScene(new CardsScene(this, resources)));
+            mainMenuScene.on(MainMenuScene.MIXED_TEXT_BUTTON_CLICKED, () => this._setScene(new MixedTextScene(this, resources)));
+            mainMenuScene.on(MainMenuScene.FIRE_BUTTON_CLICKED, () => this._setScene(new CardsScene(this, resources)));
+            this._setScene(mainMenuScene);
         });
+    }
+
+    private _setScene(scene: PIXI.Container): void {
+        this.stage.removeChildren();
+        this.stage.addChild(scene);
+    }
+
+    private _turnOnDebugFps(): void {
+        const stats = new Stats();
+        stats.showPanel(0);
+        const container = document.body.appendChild(document.createElement('div'));
+        container.appendChild(stats.dom);
+        container.className = 'fps-meter-container';
+        document.body.appendChild(container);
+        this.ticker.add(() => stats.update());
     }
 }

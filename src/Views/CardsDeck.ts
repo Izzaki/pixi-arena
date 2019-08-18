@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import * as TWEEN from "@tweenjs/tween.js";
-import {Config} from "./Config";
-import {delayToPromise} from "./utils";
+import {Config} from "../Config";
+import {delayToPromise} from "../utils";
 
 export class CardsDeck extends PIXI.Container {
 
