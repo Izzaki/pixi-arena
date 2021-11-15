@@ -20,9 +20,11 @@ module.exports = {
         extensions: [".ts", ".js"]
     },
 
-    devtool: 'source-map',
+    /*devtool: 'source-map',*/
 
     devServer: {
-        contentBase: path.join(__dirname, 'public/'),
+        static: {
+            directory: path.join(__dirname, 'public/')
+        }
     }
 };
