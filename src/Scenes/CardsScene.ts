@@ -37,7 +37,10 @@ export class CardsScene extends DefaultScene {
             card.position.copyFrom(fromDeck.getGlobalTopPoint());
 
             const tween = new TWEEN.Tween(card.position)
-                .to(toDeck.getGlobalTopPoint(), animationTime)
+            /*
+            * globalTopPoint is a getter, so the tween has always updated data and animation is running fluently.
+            * */
+                .to(toDeck.globalTopPoint, animationTime)
                 .onComplete(() => {
                     toDeck.addCard(card);
                 })
