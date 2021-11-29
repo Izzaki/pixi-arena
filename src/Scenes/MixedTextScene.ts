@@ -2,9 +2,10 @@ import * as PIXI from 'pixi.js';
 import {MixedText} from "../Views/MixedText";
 import {shuffle} from "../utils";
 import {DefaultScene} from "./DefaultScene";
+import Dict = NodeJS.Dict;
 
 export class MixedTextScene extends DefaultScene {
-    constructor(app: PIXI.Application, resources: PIXI.LoaderResource) {
+    constructor(app: PIXI.Application, resources: Dict<PIXI.LoaderResource>) {
         super(app, resources);
 
         const mixedText = new MixedText();
@@ -18,7 +19,7 @@ export class MixedTextScene extends DefaultScene {
 
             mixedText
                 .setText(shuffledSentence)
-                .setFontSize(14 + Math.round(Math.random() * 20));
+                // .setFontSize(14 + Math.round(Math.random() * 20));
         };
 
         setInterval(randomText, 2000);

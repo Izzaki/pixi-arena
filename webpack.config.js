@@ -1,6 +1,10 @@
 const path = require('path');
 
 module.exports = {
+    mode: "development",
+
+    target: 'web',
+
     entry: './src/index.ts',
     output: {
         filename: 'index.js',
@@ -20,7 +24,7 @@ module.exports = {
         extensions: [".ts", ".js"]
     },
 
-    /*devtool: 'source-map',*/
+    devtool: false,
 
     devServer: {
         static: {

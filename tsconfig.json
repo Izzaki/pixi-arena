@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es7","dom"],
     "module": "commonjs",
-    "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "preserveConstEnums": true,
     "declaration": true,
-    "outDir": "./lib/"
+    "outDir": "./lib/",
+    "esModuleInterop": true
   }
 }

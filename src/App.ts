@@ -1,12 +1,14 @@
 import * as PIXI from 'pixi.js';
 import * as TWEEN from '@tweenjs/tween.js';
+import Stats from 'stats.js';
+
 import {Assets} from "./Assets";
-import Stats = require('stats.js');
-import {CardsScene} from "./Scenes/CardsScene";
-import {MixedTextScene} from "./Scenes/MixedTextScene";
-import {MainMenuScene} from "./Scenes/MainMenuScene";
 import {AwesomeFireScene} from "./Scenes/AwesomeFireScene";
+import {CardsScene} from "./Scenes/CardsScene";
 import {DefaultScene} from "./Scenes/DefaultScene";
+import {MainMenuScene} from "./Scenes/MainMenuScene";
+import {MixedTextScene} from "./Scenes/MixedTextScene";
+import Dict = NodeJS.Dict;
 
 export class App extends PIXI.Application {
 
@@ -17,8 +19,8 @@ export class App extends PIXI.Application {
         this._loadScenes();
     }
 
-    private _loadScenes() {
-        this.ticker.add(() => TWEEN.update());
+    private _loadScenes(): void {
+        this.ticker.add(() => TWEEN.update(this.ticker.lastTime), TWEEN);
         this.loader.add([
             Assets.card.url,
             Assets.helmet.url,
@@ -26,7 +28,7 @@ export class App extends PIXI.Application {
             Assets.skeleton.url,
             Assets.fire.url,
             Assets.awesomeFire.url,
-        ]).load((loader, resources) => {
+        ]).load((loader, resources: Dict<PIXI.LoaderResource>) => {
             const mainMenuScene = new MainMenuScene(this, resources);
             this._mainMenuScene = mainMenuScene;
             mainMenuScene.on(MainMenuScene.CARDS_BUTTON_CLICKED, () => this._setScene(new CardsScene(this, resources)));
@@ -48,10 +50,8 @@ export class App extends PIXI.Application {
     private _turnOnDebugFps(): void {
         const stats = new Stats();
         stats.showPanel(0);
-        const container = document.body.appendChild(document.createElement('div'));
-        container.appendChild(stats.dom);
-        container.className = 'fps-meter-container';
-        document.body.appendChild(container);
-        this.ticker.add(() => stats.update());
+        stats.dom.className += ' fps-meter-container';
+        document.body.appendChild(stats.dom);
+        this.ticker.add(stats.update.bind(stats));
     }
 }

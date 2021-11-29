@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\public",
+    "\\src\\Views"
   ],
-  "SelectedNode": "\\src\\Assets.ts",
+  "SelectedNode": "\\public",
   "PreviewInSolutionExplorer": false
 }

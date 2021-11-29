@@ -1,7 +1,4 @@
 import * as PIXI from "pixi.js";
-import * as TWEEN from "@tweenjs/tween.js";
-import {Config} from "../Config";
-import {delayToPromise} from "../utils";
 
 export class CardsDeck extends PIXI.Container {
 
@@ -16,32 +13,30 @@ export class CardsDeck extends PIXI.Container {
     private constructCards() {
         for (let i = 0; i < this._cardsQuantity; i++) {
             const card = new PIXI.Sprite(this._texture);
-            card.y = -i * this.offset;
             card.scale.set(0.5);
-            this.addChild(card);
+            this.addCard(card);
         }
     }
 
-    async transferTo(destinationCardsDeck: CardsDeck): Promise<any> {
-        const cardsLength = this.children.length - 1;
-        const destinationsCardsLength = destinationCardsDeck.children.length;
+    addCard(card: PIXI.Sprite): void {
+        card.position.copyFrom(this.getLocalTopPoint());
+        this.addChild(card);
+    }
 
-        for (let i in this.children) {
-            const index = Number(i);
-            const card = this.children[cardsLength - index];
+    getLocalTopPoint(): PIXI.Point {
+        return new PIXI.Point(
+            0,
+            -this.children.length * this.offset,
+        );
+    }
 
-            const tween = new TWEEN.Tween(card)
-                .to({
-                    x: destinationCardsDeck.x,
-                    y: (-destinationsCardsLength - index) * destinationCardsDeck.offset
-                }, Config.ANIMATION_DURATION)
-                .start();
+    getGlobalTopPoint(): PIXI.Point {
+        const point = new PIXI.Point()
+            .copyFrom(this.getLocalTopPoint());
 
-            destinationCardsDeck.children.push(this.children.pop());
+        point.x += this.x;
+        point.y += this.y;
 
-            await delayToPromise(Config.CARD_TRANSFER_DELAY);
-        }
-
-        return Promise.resolve();
+        return point;
     }
 }

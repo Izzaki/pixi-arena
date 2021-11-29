@@ -1,4 +1,6 @@
-export function tweenToPromise(tween: TWEEN.Tween): Promise<any> {
+import * as TWEEN from '@tweenjs/tween.js';
+
+export function tweenToPromise(tween: TWEEN.Tween<any>): Promise<any> {
     return new Promise((resolve) => tween.onComplete(resolve));
 }
 
