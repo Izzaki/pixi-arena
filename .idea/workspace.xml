@@ -9,8 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3fb7d930-6364-43c3-b774-6928b4fee5e7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Scenes/CardsScene.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scenes/CardsScene.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/CardsDeck.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/CardsDeck.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -145,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CardsScene.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CardsScene.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Scenes/CardsScene.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="791">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="621">
+              <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -169,11 +167,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CardsDeck.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CardsDeck.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Views/CardsDeck.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="468">
+              <caret line="41" column="72" lean-forward="true" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -250,8 +248,8 @@
       <file leaf-file-name="Config.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Config.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+            <state relative-caret-position="119">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -339,9 +337,9 @@
         <option value="$PROJECT_DIR$/src/Scenes/AwesomeFireScene.ts" />
         <option value="$PROJECT_DIR$/src/App.ts" />
         <option value="$PROJECT_DIR$/src/Views/TextButton.ts" />
+        <option value="$PROJECT_DIR$/src/Scenes/CardsScene.ts" />
         <option value="$PROJECT_DIR$/src/Config.ts" />
         <option value="$PROJECT_DIR$/src/Views/CardsDeck.ts" />
-        <option value="$PROJECT_DIR$/src/Scenes/CardsScene.ts" />
       </list>
     </option>
   </component>
@@ -359,7 +357,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -447,12 +445,12 @@
       <workItem from="1638045544015" duration="3229000" />
       <workItem from="1638127816992" duration="5157000" />
       <workItem from="1638194991347" duration="3697000" />
-      <workItem from="1638198744555" duration="4716000" />
+      <workItem from="1638198744555" duration="5469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44193000" />
+    <option name="totallyTimeSpent" value="44946000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -670,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Config.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -686,20 +677,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/CardsDeck.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Scenes/CardsScene.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="621">
+          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/CardsDeck.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="41" column="72" lean-forward="true" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
         </state>
       </provider>
     </entry>

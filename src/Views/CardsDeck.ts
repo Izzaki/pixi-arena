@@ -37,6 +37,10 @@ export class CardsDeck extends PIXI.Container {
         return new PIXI.Point().copyFrom(this.globalTopPoint);
     }
 
+    /*
+    * Warning:
+    * It can have a performance overhead due to use this.children.length
+    * */
     get localTopPoint(): PIXI.Point {
         const point = this._localTopPoint;
         point.set(
