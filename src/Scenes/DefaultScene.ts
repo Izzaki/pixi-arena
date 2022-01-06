@@ -9,7 +9,7 @@ export class DefaultScene extends PIXI.Container {
     @eventName
     static GO_TO_MENU_BUTTON_CLICKED: string;
 
-    constructor(app: PIXI.Application, resources: Dict<PIXI.LoaderResource>) {
+    constructor(protected app: PIXI.Application, protected resources: Dict<PIXI.LoaderResource>) {
         super();
 
         const goToMenuButton = new TextButton('Go to menu', Config.DEFAULT_FONT_STYLE, () => this.emit(DefaultScene.GO_TO_MENU_BUTTON_CLICKED));

@@ -1,40 +1,47 @@
 import * as PIXI from 'pixi.js';
 import * as TWEEN from '@tweenjs/tween.js';
 import Stats from 'stats.js';
-
-import {Assets} from "./Assets";
-import {AwesomeFireScene} from "./Scenes/AwesomeFireScene";
-import {CardsScene} from "./Scenes/CardsScene";
+import {assets, Assets} from "./Configs/assets";
 import {DefaultScene} from "./Scenes/DefaultScene";
 import {MainMenuScene} from "./Scenes/MainMenuScene";
-import {MixedTextScene} from "./Scenes/MixedTextScene";
+import {Services} from "./Services/Services";
+import {RenderCache} from "./Services/RenderCache";
 import Dict = NodeJS.Dict;
+import {scenes} from "./Configs/scenes";
+import {AnimationService} from "./Services/AnimationService/AnimationService";
 
 export class App extends PIXI.Application {
 
     private _mainMenuScene: MainMenuScene;
 
-    load(): void {
-        this._turnOnDebugFps();
+    constructor(options?: PIXI.IApplicationOptions) {
+        super(options);
+
+        this.ticker.add(() => TWEEN.update(this.ticker.lastTime), TWEEN);
+
         this._loadScenes();
+        this._turnOnDebugFps();
+        this._initializeServices();
+    }
+
+    private _initializeServices(): void {
+        Services.renderCache = new RenderCache(this.renderer);
+        Services.animationService = new AnimationService();
     }
 
     private _loadScenes(): void {
-        this.ticker.add(() => TWEEN.update(this.ticker.lastTime), TWEEN);
-        this.loader.add([
-            Assets.card.url,
-            Assets.helmet.url,
-            Assets.key.url,
-            Assets.skeleton.url,
-            Assets.fire.url,
-            Assets.awesomeFire.url,
-        ]).load((loader, resources: Dict<PIXI.LoaderResource>) => {
+        this.loader.add(Array.from(assets.values()).map(asset => asset.url)).load((loader, resources: Dict<PIXI.LoaderResource>) => {
             const mainMenuScene = new MainMenuScene(this, resources);
             this._mainMenuScene = mainMenuScene;
-            mainMenuScene.on(MainMenuScene.CARDS_BUTTON_CLICKED, () => this._setScene(new CardsScene(this, resources)));
-            mainMenuScene.on(MainMenuScene.MIXED_TEXT_BUTTON_CLICKED, () => this._setScene(new MixedTextScene(this, resources)));
-            mainMenuScene.on(MainMenuScene.FIRE_BUTTON_CLICKED, () => this._setScene(new AwesomeFireScene(this, resources)));
+            mainMenuScene.initialize(scenes);
             this._setScene(mainMenuScene);
+
+            mainMenuScene.on(MainMenuScene.LEVEL_SELECT_BUTTON, (sceneClass) => this._setScene(new sceneClass(this, resources)));
+
+            // TODO: create configurable general loader.
+            const cardTexture = resources[assets.get(Assets.CARD).url].texture;
+            cardTexture.orig.width /= 2;
+            cardTexture.orig.height /= 2;
         });
     }
 

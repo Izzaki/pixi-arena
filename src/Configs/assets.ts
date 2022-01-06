@@ -1,34 +1,43 @@
-export class Assets {
-    static card: IAsset = {
+export enum Assets {
+    CARD,
+    HELMET,
+    SKELETON,
+    KEY,
+    AWESOME_FIRE,
+    FIRE,
+}
+
+export const assets: Map<Assets, IAsset> = new Map([
+    [Assets.CARD, {
         name: 'card',
         url: 'assets/card.png'
-    };
+    }],
 
-    static helmet: IAsset = {
+    [Assets.HELMET, {
         name: 'helmet',
         url: 'assets/helmet.png'
-    };
+    }],
 
-    static skeleton: IAsset = {
+    [Assets.SKELETON, {
         name: 'skeleton',
         url: 'assets/skeleton.png'
-    };
+    }],
 
-    static key: IAsset = {
+    [Assets.KEY, {
         name: 'key',
         url: 'assets/key.png'
-    };
+    }],
 
-    static awesomeFire: IAsset = {
+    [Assets.AWESOME_FIRE, {
         name: 'awesome-fire',
         url: 'assets/awesome-fire.json'
-    };
+    }],
 
-    static fire: IAsset = {
+    [Assets.FIRE, {
         name: 'fire',
         url: 'assets/fire.png'
-    };
-}
+    }]
+]);
 
 export interface IAsset {
     name: string;

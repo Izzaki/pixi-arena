@@ -1,10 +1,17 @@
 import * as TWEEN from '@tweenjs/tween.js';
+import * as PIXI from "pixi.js";
+import {assets, Assets} from "./Configs/assets";
+import Dict = NodeJS.Dict;
+
+export function getAsset(assetName: Assets, resources: Dict<PIXI.LoaderResource>) {
+    return resources[assets.get(Assets.CARD).url];
+}
 
 export function tweenToPromise(tween: TWEEN.Tween<any>): Promise<any> {
     return new Promise((resolve) => tween.onComplete(resolve));
 }
 
-export function delayToPromise(delay: number): Promise<any> {
+export function sleep(delay: number): Promise<any> {
     return new Promise((resolve) => setTimeout(resolve, delay));
 }
 
@@ -30,4 +37,8 @@ export function fullScreen(): void {
 
 export function eventName(target: any, key: string): void {
     target[key] = `generated_event_name_${target.name}.${key}`;
+}
+
+export interface IClass<T> {
+    new(...args: Array<any>): T;
 }

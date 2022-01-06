@@ -1,11 +1,11 @@
 import * as PIXI from 'pixi.js';
-import {Assets} from "../Assets";
+import {assets, Assets} from "../Configs/assets";
 import {Config} from "../Config";
 
 const mixedTextImages = new Map([
-    [':helmet:', Assets.helmet.url],
-    [':key:', Assets.key.url],
-    [':skeleton:', Assets.skeleton.url]
+    [':helmet:', Assets.HELMET],
+    [':key:', Assets.KEY],
+    [':skeleton:', Assets.SKELETON]
 ]);
 
 export class MixedText extends PIXI.Container {
@@ -67,7 +67,7 @@ export class MixedText extends PIXI.Container {
         mixed.forEach((something: string) => {
             let somethingObject: PIXI.Text | PIXI.Sprite;
             if (mixedTextImages.has(something)) {
-                somethingObject = PIXI.Sprite.from(mixedTextImages.get(something));
+                somethingObject = PIXI.Sprite.from(assets.get(mixedTextImages.get(something)).url);
                 this._sprites.push(somethingObject);
             } else {
                 somethingObject = new PIXI.Text(something, Config.DEFAULT_FONT_STYLE);

@@ -19,7 +19,6 @@ export class CardsDeck extends PIXI.Container {
     private constructCards() {
         for (let i = 0; i < this._cardsQuantity; i++) {
             const card = new PIXI.Sprite(this._texture);
-            card.scale.set(0.5);
             this.addCard(card);
         }
     }
@@ -51,6 +50,7 @@ export class CardsDeck extends PIXI.Container {
     }
 
     get globalTopPoint(): PIXI.Point {
+        console.log("%c @ get globalTopPoint: ", "color: white; background: grey");
         const point = this._globalTopPoint;
         point.copyFrom(this.getLocalTopPoint());
         point.x += this.x;

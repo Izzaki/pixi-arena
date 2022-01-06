@@ -1,12 +1,14 @@
 import {App} from "./App";
-import {fullScreen} from "./utils";
 
 window.addEventListener('load', () => {
-    // fullScreen();
     const app = new App({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
+        // resizeTo: window,
     });
-    app.load();
     document.body.appendChild(app.view);
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+    }
 });
